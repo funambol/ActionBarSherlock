@@ -22,7 +22,6 @@ import android.widget.TextView;
  * http://stackoverflow.com/questions/6051050/expandablelistfragment-with-loadermanager-for-compatibility-package
  * and then modified by Manfred Moser <manfred@simpligility.com> to get it to work with the v4 r4 compatibility
  * library. With inspirations from the library source.
- * 
  * Then minor modifications have been applied by Funambol
  *
  * All ASLv2 licensed.
