@@ -27,7 +27,6 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -380,15 +379,15 @@ public class MenuInflater {
             value = new TypedValue();
             boolean success = a.getValue(R.styleable.SherlockMenuItem_android_actionProviderClass, value);
             itemActionProviderClassName = (success && value.type == TypedValue.TYPE_STRING)  ? value.string.toString() : null;
-            
+
             try {
-            	if(itemActionProviderClassName != null){
-            		Class.forName(itemActionProviderClassName);
-            	}
-        	} catch (ClassNotFoundException e) {
-        		itemActionProviderClassName = null;
-            }            
-            
+                if(itemActionProviderClassName != null){
+                    Class.forName(itemActionProviderClassName);
+                }
+            } catch (ClassNotFoundException e) {
+                itemActionProviderClassName = null;
+            }
+
             final boolean hasActionProvider = itemActionProviderClassName != null;
             if (hasActionProvider && itemActionViewLayout == 0 && itemActionViewClassName == null) {
                 itemActionProvider = newInstance(itemActionProviderClassName,
