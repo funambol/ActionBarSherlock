@@ -354,7 +354,7 @@ public class MenuBuilder implements Menu {
                 getActionViewStatesKey());
 
         if(viewStates == null){
-            //Fixes Issue #652 for all Android OSs
+            //Fixes Issue #652 with sdk <= 2.3.6
             return;
         }
 

@@ -20,10 +20,8 @@ package com.actionbarsherlock.view;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.content.res.XmlResourceParser;
@@ -376,9 +374,19 @@ public class MenuInflater {
             itemListenerMethodName = a.getString(R.styleable.SherlockMenuItem_android_onClick);
             itemActionViewLayout = a.getResourceId(R.styleable.SherlockMenuItem_android_actionLayout, 0);
 
+            // itemActionViewClassName = a.getString(R.styleable.SherlockMenuItem_android_actionViewClass);
+            value = new TypedValue();
+            a.getValue(R.styleable.SherlockMenuItem_android_actionViewClass, value);
+            itemActionViewClassName = value.type == TypedValue.TYPE_STRING ? value.string.toString() : null;
+
+            // itemActionProviderClassName = a.getString(R.styleable.SherlockMenuItem_android_actionProviderClass);
+//            value = new TypedValue();
+//            a.getValue(R.styleable.SherlockMenuItem_android_actionProviderClass, value);
+//            itemActionProviderClassName = value.type == TypedValue.TYPE_STRING ? value.string.toString() : null;
             value = new TypedValue();
             boolean success = a.getValue(R.styleable.SherlockMenuItem_android_actionProviderClass, value);
             itemActionProviderClassName = (success && value.type == TypedValue.TYPE_STRING)  ? value.string.toString() : null;
+
 
             try {
                 if(itemActionProviderClassName != null){
